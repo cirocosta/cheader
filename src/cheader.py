@@ -9,11 +9,15 @@ from pycparser import c_parser, c_ast, parse_file, c_generator
 
 
 def get_func_defs(filename):
+    gotten = []
     ast = parse_file(filename, use_cpp=True)
-
     generator = c_generator.CGenerator()
-    decl = ast.ext[0].decl
-    return generator.visit_Decl(decl)
+
+    for ext in ast.ext:
+        print(generator.visit_Decl(ext.decl))
+        gotten.append(generator.visit_Decl(ext.decl))
+
+    return '\n'.join(gotten)
 
 
 if __name__ == "__main__":
