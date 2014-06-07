@@ -1,5 +1,7 @@
 # cheader
 
+> gets some function prototypes from C code.
+
 ## Installing
 
 Before installing, check if you have the following requirements:
