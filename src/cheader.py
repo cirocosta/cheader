@@ -7,23 +7,18 @@ sys.path.extend(['.', '..'])
 
 from pycparser import c_parser, c_ast, parse_file, c_generator
 
-class FuncDefVisitor(c_ast.NodeVisitor):
-    def visit_FuncDef(self, node):
-        generator = c_generator.CGenerator()
-        decl = generator.visit_Decl(node.decl)
-        print('%s' % (decl))
 
-
-def show_func_defs(filename):
+def get_func_defs(filename):
     ast = parse_file(filename, use_cpp=True)
 
-    v = FuncDefVisitor()
-    v.visit(ast)
+    generator = c_generator.CGenerator()
+    decl = ast.ext[0].decl
+    return generator.visit_Decl(decl)
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         filename  = sys.argv[1]
-        show_func_defs(filename)
+        get_func_defs(filename)
     else:
         print('No args passed. Exiting.')
