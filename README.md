@@ -1,4 +1,4 @@
-# cheader
+# cheader [![Build Status](https://travis-ci.org/cirocosta/cheader.svg?branch=master)](https://travis-ci.org/cirocosta/cheader)
 
 > gets some function prototypes from C code.
 
