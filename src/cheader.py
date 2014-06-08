@@ -14,7 +14,6 @@ def get_func_defs(filename):
     generator = c_generator.CGenerator()
 
     for ext in ast.ext:
-        print(generator.visit_Decl(ext.decl))
         gotten.append(generator.visit_Decl(ext.decl))
 
     return '\n'.join(gotten)
